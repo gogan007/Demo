@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiffin Service Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>🍱 Tiffin Service</h1>
+        <p>Daily order and payment dashboard</p>
+      </div>
+      <input type="date" id="selectedDate">
+    </header>
+
+    <section class="summary">
+      <div class="summary-card">
+        <span>🍛 Lunch Tiffins</span>
+        <strong id="lunchTotal">0</strong>
+      </div>
+      <div class="summary-card">
+        <span>🌙 Dinner Tiffins</span>
+        <strong id="dinnerTotal">0</strong>
+      </div>
+      <div class="summary-card">
+        <span>📦 Total Tiffins</span>
+        <strong id="grandTotal">0</strong>
+      </div>
+      <div class="summary-card">
+        <span>💵 Paid Tiffins</span>
+        <strong id="paidTotal">0</strong>
+      </div>
+      <div class="summary-card">
+        <span>⏳ Pending Tiffins</span>
+        <strong id="pendingTotal">0</strong>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>🍽️ Daily Menu</h2>
+      <div class="menu-grid">
+        <div class="menu-box">
+          <h3>Lunch</h3>
+          <p>Sabji + Roti</p>
+          <p>Dal + Rice</p>
+        </div>
+        <div class="menu-box">
+          <h3>🌙 Dinner</h3>
+          <!-- Display View -->
+          <div id="dinnerDisplay" style="display: none;">
+            <div id="dinnerText"></div>
+            <button id="editMenu" type="button" class="small-btn" style="margin-top: 10px;">Edit Dinner Menu</button>
+          </div>
+          <!-- Edit View -->
+          <div id="dinnerEdit">
+            <textarea id="dinnerMenu" placeholder="Enter today's dinner menu..."></textarea>
+            <button id="saveMenu" type="button">Save Dinner Menu</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📋 Add Tiffin Order</h2>
+      <form id="orderForm">
+        <div class="form-grid">
+          <div>
+            <label for="studentName">Student Name</label>
+            <input id="studentName" type="text" placeholder="Enter name" required>
+          </div>
+          <div>
+            <label for="tiffinCount">Number of Tiffins</label>
+            <input id="tiffinCount" type="number" min="1" value="1" required>
+          </div>
+          <div>
+            <label for="mealType">Meal</label>
+            <select id="mealType">
+              <option value="Dinner">Dinner</option>
+              <option value="Lunch">Lunch</option>
+            </select>
+          </div>
+          <div>
+            <label for="paymentStatus">Payment</label>
+            <select id="paymentStatus">
+              <option value="Pending">Pending</option>
+              <option value="Paid">Paid</option>
+              <option value="Partial">Partial</option>
+            </select>
+          </div>
+          <div id="partialPaymentDiv" style="display: none;">
+            <label for="paidCount">Paid Tiffins</label>
+            <input id="paidCount" type="number" min="1" value="1">
+          </div>
+        </div>
+        <button type="submit">➕ Add Order</button>
+      </form>
+    </section>
+
+
+    <section class="orders">
+      <div class="section-heading">
+        <h2>🍛 Lunch Orders</h2>
+        <span id="lunchCountLabel">0 orders</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Tiffins</th>
+              <th>Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="lunchTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="orders">
+      <div class="section-heading">
+        <h2>🌙 Dinner Orders</h2>
+        <span id="dinnerCountLabel">0 orders</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Tiffins</th>
+              <th>Payment</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="dinnerTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <button class="danger" id="clearDay">Clear Selected Day</button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
