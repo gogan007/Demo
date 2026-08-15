@@ -198,8 +198,6 @@ orderForm.addEventListener("submit", (e) => {
 
   saveData(data);
   orderForm.reset();
-  tiffinCount.value = 1;
-  paidCountInput.value = 0;
   partialPaymentDiv.style.display = "none";
   render();
 });
